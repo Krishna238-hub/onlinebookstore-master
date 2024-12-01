@@ -29,7 +29,6 @@ pipeline {
                 steps {
                     script{
                         withDockerRegistry(credentialsId: 'docker-credentials', url: 'https://index.docker.io/v1/') {
-                            sh "echo DOCKER_PAT | docker login -u krishna2317 --password-stdin https://index.docker.io/v1/"
                             sh "docker push krishna2317/onlinebookstore:2"
                             
                         }
