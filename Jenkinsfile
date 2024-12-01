@@ -28,7 +28,7 @@ pipeline {
             stage("Push to docker Hub") {
                 steps {
                     script{
-                       withCredentials([string(credentialsId: 'docker-pat', variable: 'Docker_PAT')]) {
+                       withCredentials([string(credentialsId: 'docker-credentials', variable: 'Docker_PAT')]) {
                            sh 'echo $Docker_PAT | docker login -u krishna2317 --password-stdin https://index.docker.io/v1/'
                            sh "docker push krishna2317/onlinebookstore:2"
                             
