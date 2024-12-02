@@ -46,7 +46,7 @@ pipeline {
                     sh 'docker pull krishna2317/onlinebookstore:${BUILD_NUMBER}'
                 }
             }
-            Stage("run"){
+            stage("run"){
                 sh 'docker run -d -p 8040:8080 bookstore:${BUILD_NUMBER}'
             }
             
