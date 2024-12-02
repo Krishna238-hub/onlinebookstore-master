@@ -36,11 +36,6 @@ pipeline {
                     }
                 }
             }  
-            stage("deploy to Tomact"){
-                steps{
-                    deploy adapters: [tomcat9(credentialsId: 'admin', path: '', url: 'http://65.1.127.232:8090')], contextPath: '/docker', war: '**/*.war'
-                }
-            }
             stage("pull to Docker desktop"){
                 steps{
                     sh 'docker pull krishna2317/onlinebookstore:${BUILD_NUMBER}'
