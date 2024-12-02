@@ -16,13 +16,13 @@ pipeline {
             }
             stage("build docker Image") {  
            	    steps {  
-                      sh "docker build -t bookstore:1 ."
+                      sh "docker build -t bookstore:${BUILD_NUMBER} ."
               	    }
                 
             }
             stage("Build Tag"){
                 steps{
-                   sh "docker tag bookstore:1  krishna2317/onlinebookstore:2" 
+                   sh "docker tag bookstore:${BUILD_NUMBER}  krishna2317/onlinebookstore:${BUILD_NUMBER}" 
                 }
             }
             stage("Push to docker Hub") {
@@ -30,7 +30,7 @@ pipeline {
                     script{
                        withCredentials([string(credentialsId: 'docker-pat', variable: 'Docker_PAT')]) {
                            sh 'echo $Docker_PAT | docker login -u krishna2317 --password-stdin https://index.docker.io/v1/'
-                           sh "docker push krishna2317/onlinebookstore:2"
+                           sh "docker push krishna2317/onlinebookstore:${BUILD_NUMBER}"
                             
                         }
                     }
