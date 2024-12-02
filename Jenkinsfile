@@ -43,7 +43,7 @@ pipeline {
             }
             stage("run"){
                 steps{
-                    sh 'docker run -d -p 8040:8080 bookstore:${BUILD_NUMBER}'
+                    sh 'docker run -d -p 8041:8080 bookstore:${BUILD_NUMBER}'
                 }
                 
             }
