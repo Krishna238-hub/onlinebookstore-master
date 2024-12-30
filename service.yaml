@@ -3,8 +3,8 @@ kind: Service
 metadata:
   name: bookstore-service
   annotations:
-    service.beta.kubernetes.io/aws-load-balancer-type: "alb"  # Use "nlb" for Network Load Balancer, or omit for Classic LB
-    service.beta.kubernetes.io/aws-load-balancer-healthcheck-path: "/health"  # Optional, based on your app's health check path
+    service.beta.kubernetes.io/aws-load-balancer-type: "alb"  # Use "alb" for Application Load Balancer
+    service.beta.kubernetes.io/aws-load-balancer-healthcheck-path: "/health"  # Health check path
     service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "HTTP"  # Protocol your app listens to
 spec:
   selector:
