@@ -3,14 +3,14 @@ kind: Service
 metadata:
   name: bookstore-service
   annotations:
-    service.beta.kubernetes.io/aws-load-balancer-type: "alb"  # Use "alb" for Application Load Balancer
-    service.beta.kubernetes.io/aws-load-balancer-healthcheck-path: "/health"  # Health check path
-    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "HTTP"  # Protocol your app listens to
+    service.beta.kubernetes.io/aws-load-balancer-type: "alb"
+    service.beta.kubernetes.io/aws-load-balancer-healthcheck-path: "/health"
+    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "TCP"
 spec:
   selector:
     app: bookstore
   ports:
     - protocol: TCP
-      port: 80      # Expose port 80 externally
-      targetPort: 8081  # Forward traffic to port 8081 inside the container
+      port: 80
+      targetPort: 8081
   type: LoadBalancer
