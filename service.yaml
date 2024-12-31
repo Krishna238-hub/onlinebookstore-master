@@ -3,14 +3,18 @@ kind: Service
 metadata:
   name: bookstore-service
   annotations:
-    service.beta.kubernetes.io/aws-load-balancer-type: "alb"
-    service.beta.kubernetes.io/aws-load-balancer-healthcheck-path: "/health"
-    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "TCP"
+    service.beta.kubernetes.io/aws-load-balancer-type: "application"  
+    service.beta.kubernetes.io/aws-load-balancer-healthcheck-path: "/"  # Health check path for your app
+    service.beta.kubernetes.io/aws-load-balancer-healthcheck-interval: "60"  # Health check interval in seconds
+    service.beta.kubernetes.io/aws-load-balancer-healthcheck-timeout: "10"  # Health check timeout in seconds
+    service.beta.kubernetes.io/aws-load-balancer-healthcheck-healthy-threshold: "5"  # Number of consecutive health check successes
+    service.beta.kubernetes.io/aws-load-balancer-healthcheck-unhealthy-threshold: "2"  # Number of consecutive health check failures
+    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "HTTP"  # Protocol your app listens to
 spec:
   selector:
     app: bookstore
   ports:
     - protocol: TCP
-      port: 80
-      targetPort: 8081
+      port: 80      # Expose port 80 externally
+      targetPort: 8081  # Forward traffic to port 8081 inside the container
   type: LoadBalancer
