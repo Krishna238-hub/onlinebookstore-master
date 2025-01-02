@@ -9,6 +9,5 @@ spec:
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 80
+      targetPort: 8081  # Change targetPort to 8081
       nodePort: 32108
-  externalTrafficPolicy: Cluster
