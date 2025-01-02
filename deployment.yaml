@@ -16,7 +16,7 @@ spec:
       - name: bookstore
         image: krishna2317/onlinebookstore:try
         ports:
-        - containerPort: 8081  # Change containerPort to 8081
+        - containerPort: 8081  # Ensure this matches the configured port
         env:
         - name: CATALINA_OPTS
-          value: "-Djava.security.egd=file:/dev/./urandom -Dserver.port=8081"  # Change the server port
+          value: "-Djava.security.egd=file:/dev/./urandom -Dserver.port=8081"  # Ensure the server port matches
