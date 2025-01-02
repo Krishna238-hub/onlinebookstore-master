@@ -9,7 +9,5 @@ spec:
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 8081
-      nodeport: 32108
-    type: NodePort
-      
+      targetPort: 80
+      nodePort: 32108
