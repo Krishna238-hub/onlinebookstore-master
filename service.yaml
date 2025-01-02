@@ -17,4 +17,4 @@ spec:
     - protocol: TCP
       port: 80      # Expose port 80 externally
       targetPort: 8081  # Forward traffic to port 8081 inside the container
-  type: LoadBalancer
+  type: NodePort
